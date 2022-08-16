@@ -57,7 +57,7 @@
         combo_config {
             timeout-ms = <300>;
             key-positions = <55 59>;
-            bindings = <&mo CONFIG>;
+            bindings = <&kp DOWN>;
         };
     };
 
