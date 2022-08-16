@@ -10,20 +10,137 @@
 #define CONFIG 4
 / {
 	macros {
-    	intellij_rename: intellij_rename {
-			label = "rename";
+    	ij_rename: ij_rename {
+			label = "Refactor Rename";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
+			wait-ms = <10>;
 			bindings
 				= <&macro_press &kp LSHFT>
 				, <&macro_tap &kp F6>
 				, <&macro_release &kp LSHFT>
 				;
     	};
+		ij_usage: ij_usage {
+			label = "Usage";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_tap &kp F7>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_inline: ij_inline {
+			label = "Refactor Inline";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp N>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rprp: ij_rprp {
+			label = "Refactor Extract Property";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp P>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rtas: ij_rtas {
+			label = "Refactor Type Alias";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHFT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp A>
+				, <&macro_release &kp LSHFT>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_sign: ij_sign {
+			label = "Refactor Change Signature";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LGUI>
+				, <&macro_tap &kp F6>
+				, <&macro_release &kp LGUI>
+				;
+    	};
+		ij_adbr: ij_adbr {
+			label = "Attach Debugger";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHFT>
+				, <&macro_tap &kp F5>
+				, <&macro_release &kp LSHFT>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rvar: ij_rvar {
+			label = "Refactor Extract Variable";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp V>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rfun: ij_rfun {
+			label = "Refactor Extract Function";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHIFT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp M>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LSHIFT>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		swtr: swtr {
+			label = "macOS Next Application Window";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LGUI>
+				, <&macro_tap &kp GRAVE>
+				, <&macro_release &kp LGUI>
+				;
+    	};
 		mctl: mctl {
 			label = "macOS Mission Control";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
+			wait-ms = <10>;
 			bindings
 				= <&macro_press &kp LCTRL>
 				, <&macro_tap &kp UP>
@@ -34,6 +151,7 @@
 			label = "macOS App Windows";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
+			wait-ms = <10>;
 			bindings
 				= <&macro_press &kp LCTRL>
 				, <&macro_tap &kp DOWN>
@@ -56,7 +174,7 @@
         compatible = "zmk,combos";
         combo_config {
             timeout-ms = <300>;
-            key-positions = <55 59>;
+            key-positions = <57 61>;
             bindings = <&kp DOWN>;
         };
     };
@@ -83,7 +201,7 @@
 		spacefn {
 			bindings = <
 				&kp GRAVE &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp DEL
-				&trans &trans &kp UP &trans &trans &trans &trans &kp HOME &kp UP &kp END &trans &trans &trans &trans
+				&swtr &trans &kp UP &trans &trans &trans &trans &kp HOME &kp UP &kp END &trans &trans &trans &trans
 				&trans &kp LEFT &kp DOWN &kp RIGHT &trans &trans &kp PG_UP &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans
 				&trans &trans &trans &trans &trans &kp SPACE &kp PG_DN &trans &trans &trans &trans &trans
 				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
@@ -101,9 +219,9 @@
 		intellij {
 			bindings = <
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &intellij_rename &trans &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans 
+				&trans &trans &trans &trans &ij_rename &trans &trans &ij_usage &ij_inline &ij_rprp &trans &trans &trans &trans
+				&trans &ij_rtas &ij_sign &ij_adbr &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &ij_rvar &trans &trans &ij_rfun &trans &trans &trans &trans &trans 
 				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
 			>;
 		};
