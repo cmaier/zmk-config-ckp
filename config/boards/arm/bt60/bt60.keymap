@@ -95,7 +95,7 @@
 			&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 			&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &term 
 			&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
-		}
+		};
 		intellij {
 			bindings = <
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
