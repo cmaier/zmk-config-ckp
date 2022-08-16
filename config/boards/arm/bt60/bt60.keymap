@@ -44,6 +44,7 @@
 			label = "macOS Terminal Hotkey";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
+			wait-ms = <10>;
 			bindings
 				= <&macro_press &kp RALT>
 				, <&macro_tap &kp SLASH>
