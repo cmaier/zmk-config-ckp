@@ -57,7 +57,7 @@
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans 
 				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
 			>;
-		}
+		};
 		keyboard_config {
 			bindings = <
 				&reset &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &bootloader
