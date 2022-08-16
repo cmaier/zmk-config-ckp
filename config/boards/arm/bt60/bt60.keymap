@@ -55,7 +55,7 @@
 	combos {
         compatible = "zmk,combos";
         combo_config {
-            timeout-ms = <50>;
+            timeout-ms = <300>;
             key-positions = <55 59>;
             bindings = <&mo CONFIG>;
         };
