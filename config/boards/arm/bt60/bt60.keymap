@@ -9,7 +9,7 @@
 #define CONFIG 3
 / {
 	macros {
-    	macro_name: macro_name {
+    	intellij_rename: intellij_rename {
 			label = "rename";
 			compatible = "zmk,behavior-macro";
 			#binding-cells = <0>;
@@ -52,7 +52,7 @@
 		intellij {
 			bindings = <
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &trans &trans &trans &rename &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &intellij_rename &trans &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans 
 				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
