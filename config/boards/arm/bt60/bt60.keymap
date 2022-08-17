@@ -174,7 +174,7 @@
         compatible = "zmk,combos";
         combo_config {
             timeout-ms = <300>;
-            key-positions = <57 61>;
+            key-positions = <54 58>;
             bindings = <&kp DOWN>;
         };
     };
