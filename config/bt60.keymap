@@ -4,37 +4,265 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
+#define DEFAULT 0
+#define SPACEFN 1
+#define MACOS 2
+#define INTELLIJ 3
+#define GAMING 4
+#define GAMING_MEDIA 5
+#define CONFIG 6
 / {
+	macros {
+    	ij_rename: ij_rename {
+			label = "Refactor Rename";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LSHFT>
+				, <&macro_tap &kp F6>
+				, <&macro_release &kp LSHFT>
+				;
+    	};
+		ij_usage: ij_usage {
+			label = "Usage";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_tap &kp F7>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_inline: ij_inline {
+			label = "Refactor Inline";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp N>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rprp: ij_rprp {
+			label = "Refactor Extract Property";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp P>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rtas: ij_rtas {
+			label = "Refactor Type Alias";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHFT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp A>
+				, <&macro_release &kp LSHFT>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_sign: ij_sign {
+			label = "Refactor Change Signature";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LGUI>
+				, <&macro_tap &kp F6>
+				, <&macro_release &kp LGUI>
+				;
+    	};
+		ij_adbr: ij_adbr {
+			label = "Attach Debugger";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHFT>
+				, <&macro_tap &kp F5>
+				, <&macro_release &kp LSHFT>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rvar: ij_rvar {
+			label = "Refactor Extract Variable";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp V>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		ij_rfun: ij_rfun {
+			label = "Refactor Extract Function";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LALT>
+				, <&macro_press &kp LSHIFT>
+				, <&macro_press &kp LGUI>
+				, <&macro_tap &kp M>
+				, <&macro_release &kp LGUI>
+				, <&macro_release &kp LSHIFT>
+				, <&macro_release &kp LALT>
+				;
+    	};
+		swtr: swtr {
+			label = "macOS Next Application Window";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LGUI>
+				, <&macro_tap &kp GRAVE>
+				, <&macro_release &kp LGUI>
+				;
+    	};
+		mctl: mctl {
+			label = "macOS Mission Control";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LCTRL>
+				, <&macro_tap &kp UP>
+				, <&macro_release &kp LCTRL>
+				;
+    	};
+		awnd: awnd {
+			label = "macOS App Windows";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp LCTRL>
+				, <&macro_tap &kp DOWN>
+				, <&macro_release &kp LCTRL>
+				;
+    	};
+		term: term {
+			label = "macOS Terminal Hotkey";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <10>;
+			bindings
+				= <&macro_press &kp RALT>
+				, <&macro_tap &kp SLASH>
+				, <&macro_release &kp RALT>
+				;
+    	};
+	};
+	combos {
+        compatible = "zmk,combos";
+        combo_config {
+            timeout-ms = <300>;
+            key-positions = <54 58>;
+            bindings = <&mo CONFIG>;
+        };
+    };
+	behaviors {
+        tiesc: tilde_escape {
+            compatible = "zmk,behavior-mod-morph";
+            label = "TILDE_ESCAPE";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp TILDE>;
+            mods = <(MOD_LSFT)>;
+        };
+    };
+
 	keymap {
 		compatible = "zmk,keymap";
 
 		default_layer {
 				// ------------------------------------------------------------------------------------------
-				// |  `  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   BKSP
+				// | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   BKSP
 				// | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |   |
-				// | CAPS  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |     ENTER
+				// | INTELLIJ  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |     ENTER
 				// |  SHIFT    |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  | /   |      SHIFT
-				// |  CTL  |  WIN  |  ALT  |            SPACE               | ALT | 1    |  MENU    |  CTRL
+				// |  CTRL  |  OPT  |  CMD  |            SPACE               | CMD | OPT |  CTRL  |  MACOS
 				// ------------------------------------------------------------------------------------------
 			bindings = <
-
-				&kp ESC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp  N8   &kp  N9 &kp  N0  &kp MINUS &kp EQUAL &kp BSPC
+				&tiesc &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp  N8   &kp  N9 &kp  N0  &kp MINUS &kp EQUAL &kp BSPC
 				&kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp  I    &kp  O  &kp  P   &kp LBKT &kp RBKT   &kp BSLH
-				&kp CAPS  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp  K    &kp  L  &kp SEMI &kp SQT            &kp RET
+				&mo INTELLIJ  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp  K    &kp  L  &kp SEMI &kp SQT            &kp RET
 				&kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH                   &kp RSHFT
-				&kp LCTRL &kp LGUI &kp LALT            &kp SPACE                          &kp RALT  &mo 1 &kp C_MENU    &kp RCTRL
+				&kp LCTRL &kp LALT &kp LGUI            &lt SPACEFN SPACE                     &kp RGUI  &kp RALT &kp RCTRL    &mo MACOS
 			>;
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
-		raise {
+		spacefn {
 			bindings = <
-				&bt BT_CLR &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp DEL
-				&trans &trans &kp UP &trans &trans &trans &trans &trans &kp INS &trans &kp PSCRN &kp SLCK &kp PAUSE_BREAK &rgb_ug RGB_TOG
-				&kp CAPS    &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans &trans &trans &trans &kp HOME  &kp PG_UP   &bootloader
-				&kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE &bl BL_INC &bl BL_DEC &trans &trans &trans &kp END &kp PG_DN  &bl BL_TOG
-				&bt BT_PRV &bt BT_NXT  &trans              &trans                            &trans   &trans   &sys_reset &bt BT_CLR
+				&kp GRAVE &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp DEL
+				&swtr &trans &kp UP &trans &trans &trans &trans &kp HOME &kp UP &kp END &trans &trans &trans &trans
+				&trans &kp LEFT &kp DOWN &kp RIGHT &trans &trans &kp PG_UP &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans
+				&trans &trans &trans &trans &trans &kp SPACE &kp PG_DN &trans &trans &trans &trans &trans
+				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
 			>;
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+		};
+		macos {
+			bindings = <
+				&trans &kp C_BRI_DN &kp C_BRI_UP &mctl &awnd &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &term 
+				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
+			>;
+		};
+		intellij {
+			bindings = <
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &ij_rename &trans &trans &ij_usage &ij_inline &ij_rprp &trans &trans &trans &trans
+				&trans &ij_rtas &ij_sign &ij_adbr &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &ij_rvar &trans &trans &ij_rfun &trans &trans &trans &trans &trans 
+				&trans &trans &trans                     &trans                                 &trans &trans &trans &trans
+			>;
+		};
+		gaming {
+			bindings = <
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&mo SPACEFN &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans                     &kp SPACE                             &trans &trans &trans &mo GAMING_MEDIA
+			>;
+		};
+		gaming_media {
+			bindings = <
+				&trans &kp C_BRI_DN &kp C_BRI_UP &trans &trans &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &trans                     &trans                             &trans &trans &trans &trans
+			>;
+		};
+		keyboard_config {
+			bindings = <
+				&sys_reset &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &bootloader
+				&trans &rgb_ug RGB_TOG &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &to GAMING &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &to DEFAULT &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &trans &bt BT_PRV                     &bt BT_CLR                         &bt BT_NXT &trans &trans &trans
+			>;
 		};
 	};
 };
