@@ -257,9 +257,9 @@
 		};
 		keyboard_config {
 			bindings = <
-				&sys_reset &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &bootloader
+				&sys_reset &bt BT_CLR_ALL &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &bootloader
 				&trans &rgb_ug RGB_TOG &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-				&trans &to GAMING &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+				&trans &to GAMING &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &bt BT_TOG
 				&trans &to DEFAULT &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 				&trans &trans &bt BT_PRV                     &bt BT_CLR                         &bt BT_NXT &trans &trans &trans
 			>;
