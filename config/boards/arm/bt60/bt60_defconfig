@@ -39,7 +39,5 @@ CONFIG_ZMK_BACKLIGHT=n # was y
 CONFIG_BUILD_OUTPUT_UF2=y
 CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
 
-# Enable deep sleep support:
-CONFIG_ZMK_SLEEP=y
-# Milliseconds of inactivity before entering deep sleep:
-CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000
+CONFIG_ZMK_SLEEP=y # Enable deep sleep support
+CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000 # Milliseconds of inactivity before entering deep sleep
